@@ -6,7 +6,7 @@ int bt;
 }ps[20];
 int main() 
 {
-int I,j,n,temp,tempbt,wt[20],bt[20],tat[20],ttat,twt; 
+int i,j,n,temp,tempbt,wt[20],bt[20],tat[20],ttat,twt; 
 float a,b; 
 printf("Enter the number of processes: "); 
 scanf("%d",&n); 
@@ -27,8 +27,8 @@ for(j=0;j<n-i-1;j++)
 if(ps[j].p>ps[j+1].p) 
 {
 tempbt=ps[j].bt; 
-ps[j].bt=ps[j+l].bt; 
-ps[j+l].bt=tempbt; 
+ps[j].bt=ps[j+1].bt; 
+ps[j+1].bt=tempbt; 
 temp=ps[j].p; 
 ps[j].p=ps[j+1].p; 
 ps[j+l].p=temp; 
