@@ -1,7 +1,7 @@
 include <stdio.h> 
 int main() 
 {
-int sl,n,I,s,diff,tst=0,req[20]; 
+int sl,n,i,s,diff,tst=0,req[20]; 
 printf( "Enter the size of the memory: "); 
 scanf("%d",&s); 
 printf( "Enter the number of request: ");
