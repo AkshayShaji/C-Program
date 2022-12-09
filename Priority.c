@@ -31,7 +31,7 @@ ps[j].bt=ps[j+1].bt;
 ps[j+1].bt=tempbt; 
 temp=ps[j].p; 
 ps[j].p=ps[j+1].p; 
-ps[j+l].p=temp; 
+ps[j+1].p=temp; 
 }
 }
 } 
