@@ -26,7 +26,7 @@ prediff=diff ;
 }
 }
 }
-tst=((s-l)-req[0])+(s-1)+sl; 
+tst=((s-1)-req[0])+(s-1)+sl; 
 printf("Total seek time is %d\n",tst); 
 return 0;
 }
