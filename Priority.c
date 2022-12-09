@@ -51,6 +51,6 @@ ttat=ttat+tat[i];
 a=twt/n; 
 b=ttat/n; 
 printf("Average waiting time is %.2f",a);
-printf("Average turn around time is %.2f,b);
+printf("Average turn around time is %.2f",b);
 return 0;
 }
