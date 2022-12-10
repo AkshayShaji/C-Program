@@ -1,4 +1,4 @@
-include <stdio.h> 
+#include <stdio.h> 
 int main() 
 {
 int sl,n,i,s,diff,tst=0,req[20]; 
@@ -7,7 +7,7 @@ scanf("%d",&s);
 printf( "Enter the number of request: ");
 scanf("%d",&n); 
 printf("Enter the current head position: "); 
-Iscanf("%d",&req[0]); 
+scanf("%d",&req[0]); 
 printf( "Enter the request: ");
 for(i=1;i<=n;i++)
 {
