@@ -1,4 +1,4 @@
-include <stdio.h> 
+#include <stdio.h> 
 int main() 
 {
 int n,i,j,temp,bt[20],wt[20],tat[20],twt,ttat; 
@@ -6,7 +6,7 @@ float a,b;
 printf( "Enter the number of processes: "); 
 scanf("%d",&n); 
 printf("Enter the burst time of processes: "); 
-for(i=0;i<n-l; i++) 
+for(i=0;i<n-1; i++) 
 {
 for(j=0;j<n-i-1;j++)
 {
