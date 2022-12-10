@@ -1,4 +1,4 @@
-include <stdio.h> 
+#include <stdio.h> 
 int main() 
 {
 int n,diff,tst=0,req[20],i; 
