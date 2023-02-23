@@ -1,97 +1,97 @@
 #include <stdio.h> 
-#include <stdlib.h> 
-#include <string.h> 
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 int main() 
 {
-char s[100] ,lab[30],opcode[30],opa[30],opcode1[30],opa1[30];
-int locctr, x=0; 
-FILE *fp1, *fp2, *fp3, *fp4; 
-fp1=fopen( "input.txt ","r"); 
-fp2=fopen("symtab.txt","w"); 
-fp3=fopen( "out .txt ","w"); 
-fp4=fopen( "optab. txt" ,"r"); 
-while(fscanf(fp1,"%s%s%s ",lab,opcode,opa)!=EOF) 
+char label[10],opcode[10],operand[10],code[10]; 
+int locctr,length,start; 
+FILE *fp1,*fp2,*fp3,*fp4; 
+Fp1=fopen("Input.txt","r") ; 
+fp2=fopen("Symtab.txt","w" ) ; 
+fp3=fopen("Out.txt ","w") ; 
+fp4=fopen("Optab.txt","r"); 
+fscanf(fp1,"%s%s%s",label,opcode,operand); 
+if(strcmp(opcode,"START")==0)
 {
-if(strcmp(lab,''*")==0) 
+start=atoi(operand); 
+locctr=start; 
+fprintf(fp3,"%s\t%s\t%s\n, label,opcode,operand); 
+fscanf(fp1,"%s%s%s",label,opcode,operand); 
+}
+else
 {
-if(strcmp(opcode,"START")) 
+locctr=ø;
+} 
+while(strcmp(opcode, "END")!=0)
 {
-fprintf (fp3 ,"%s\t%s\t%s\n,lab,opcode,opa); 
-Locctr=(atoi(opa)); 
-else 
-{
-rewind (fp2); 
-x=0;
-while(fscanf(fp2,"%s%s",opcode1, opa1)!=EOF) 
-{
-if ( strcmp(opcode,opcode1)==0)
+fprintf(fp3 ,"%d\t",locctr); 
+if(strcmp(label,"**")!=0)
 { 
-x=1;
-}
-}
-If(x==1)
+fprintf(fp2,"%s\t%d\n",label,locctr);
+} 
+rewind(fp4) ; 
+while(strcmp(code,"END")!=0)
 { 
-fprintf (fp3,"\n%d\t%s\t%s\t%s\n",locctr,lab,opcode,opa); 
-locctr=locctr+3;
+if(strcmp(opcode, code)==0)
+{ 
+locctr+=3; 
+break;
+} 
+fscanf(fp4,"%s",code); 
 }
-}
-}
-else 
+if(strcmp(opcode,"WORD")==0)
+{ 
+locctr+=3;
+} 
+else if(strcmp(opcode,"RESW)==0)
+{ 
+locctr+=3*atoi(operand);
+} 
+else if(strcmp(opcode,"RESB)==0)
 {
-if(strcmp(opcode,"RESW")==0)
-{ 
-fprintf (fp3,"\n%d\t%s\t%s\t%s\n",locctr,lab,opcode,opa); 
-fprintf(fp4,"\n%d\t%s\n",locctr,lab); 
-locctr=locctr+3; 
-}
-else if(strcmp(opcode,"WORD")==0)
-{ 
-fprintf (fp3,"\n%d\t%s\t%s\t%s\n",locctr,lab,opcode,opa); 
-fprintf(fp4,"\n%d\t%s\n",locctr,lab); 
-}
+locctr+=atoi(operand);
+} 
 else if(strcmp(opcode,"BYTE")==0)
-fprintf (fp3,\n%d\t%s\t%s\t%s\n",locctr,lab,opcode,opa); 
-fprintf(fp4,"\n%d\t%s\n",locctr,lab); 
-}
-else 
-{
-fprintf(fp3 , "\n%d\t%s\t%s\t%s\n",locctr,lab,opcode,opa); 
-fprintf(fp4,"\n%d\t%s\n, locctr, lab); 
-}
-locctr=locctr+(atoi(opa)); 
-}
-}
-}
+{ 
+locctr+=strlen(operand)-3;
+} 
+fprintf(fp3,"%s\t%s\t%s\n",label,opcode,operand); 
+fscanf(fp1,"%s%s%s",label,opcode,operand);
+} 
+fprintf(fp3,"%s\t%s\t%s\n,label,opcode,operand); 
+length=locctr-start; 
+printf("The length of the program:  %d\n",length); 
+fclose(fp1); 
+fcIose(fp2); 
+fclose(fp3); 
+fclose(fp4); 
 return 0;
-}
-
-        
-       Input: 
-        input.txt
-        
-      ** START 2000 
-      ** LDA   FIVE
-      ** STA   ALPHA 
-      ** LDCH  CHARZ
-      ** STCH  C1
-      ALPHA    RESW 
-      FIVE     WORD 5
-      CHARZ    BYTE C'Z' 
-      C1       RESB 1 
-      **       END  **
+} 
 
         
         
+Input.txt
+        
+**    START 2000
+**    LDA   FIVE
+**    STA   ALPHA
+**    LDCH  CHARZ
+**    STCH  C1
+ALPHA RESW  1
+FIVE  WORD  5  
+CHARZ BYTE  C'Z'
+C1    RESB  1
+**    END   **
         
         
         
         
+Optab.txt
         
-        optab.txt
-        
-        START * 
-        LDA   03 
-        STA   0F
-        LDCH  53 
-        STCH  57
-        END 
+START
+LDA
+STA
+LDCH
+STCH
+END
